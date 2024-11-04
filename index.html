@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Gaya CSS */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F5F5DC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 600px;
+      height: 400px;
+      perspective: 1000px;
+    }
+
+    .flipbook {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .flipbook-page {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, #E0F7FA, #B2EBF2); /* Gradasi biru muda */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-sizing: border-box;
+      transform-origin: left center;
+      opacity: 0;
+      transform: rotateY(-90deg);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .flipbook-page.active {
+      opacity: 1;
+      transform: rotateY(0);
+    }
+
+    .flipbook-page.left {
+      transform-origin: right center;
+      left: 0;
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .flipbook-page.right {
+      transform-origin: left center;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flipbook-page img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cover {
+      background-image: url('https://i.ibb.co.com/88pKJ9Y/stand-by-me-doraemon-wallpaper-preview.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      opacity: 1;
+      transform: rotateY(0);
+      z-index: 1;
+      width: 100%;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .cover h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flipbook">
+      <div class="flipbook-page cover active" onclick="goToPage(0)">
+        <h1>PhotoBook</h1>
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(1)">
+        <p>Halaman 1: Selamat datang di PhotoBook kami. Di sini Anda akan menemukan kenangan yang indah dalam setiap gambar.</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(2)">
+        <img src="https://i.ibb.co/n7WhR9P/Screenshot-20241103-162317-Instagram.png" alt="Screenshot-20241103-162317-Instagram" border="0">
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(3)">
+        <p>Hallaw Gengs ✋.ini adalah bubub Aku. emang si keliatan dari mukanya aja dia tengil kan.tapi dia ini aslinya cakep ko ga jemedut gini.kkekw sayanya aja yg jail.</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(4)">
+        <img src="https://i.ibb.co/9hm23gN/IMG-20241029-122546-510-2.jpg" alt="IMG-20241029-122546-510-2" border="0">
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(5)">
+        <p>Nah sebenarnya ini dia wajah aslinya. Cantik kan . iyalah cakep bjir yakali ngga😋.</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(6)">
+        <img src="https://i.ibb.co.com/pr280tF/IMG-20241029-122548-533-2.jpg" alt="IMG-20241029-122548-533-2" border="0">
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(7)">
+        <p>Gengs. kalo kalian punya spek yali yali kaya gini apa ga beruntung seumur hidup klean💣. cantik,baik,minusnya songong aja sama pelit pap 🥴🥴.</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(8)">
+        <img src="https://i.ibb.co.com/KFMvnXd/IMG-20241029-122557-799-2.jpg" alt="IMG-20241029-122557-799-2" border="0">
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(9)">
+        <p>Nih juga nih terlihat manis kan ? 🥴 . tapi tahukah anda ( anjay cosplay pembawa berita) sebenarnya di balik senyumnya dia selalu menyimpan lukanya sendiri.dia itu wanita yang kuat,hebat dan punya keinginan yang keren luar biasa 💣🔥.</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(10)">
+        <img src="https://i.ibb.co.com/JRKbm5d/IMG-20241029-122551-707.jpg" alt="IMG-20241029-122551-707" border="0">
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(11)">
+        <p>Nah Nah lu liat aje dah sendiri pada. Gilla Cakep bat kan😱. saya aja sering salting haha. oeh iya dia sekarang lagi ultah loh. Barokallahu fi umrik ya markocot 🎁🥳 kata kata lainnya nanti aja nyusul langsung hahhaah 🤲</p>
+      </div>
+      <div class="flipbook-page right" onclick="goToPage(12)">
+        <video width="100%" height="100%" controls>
+          <source src="https://github.com/user-attachments/assets/a28cd4ce-6c47-4514-a2a5-bd3dd2561071" type="video/mp4">
+          Video tidak dapat diputar.
+        </video>
+      </div>
+      <div class="flipbook-page left" onclick="goToPage(13)">
+        <p>Ini dia last .liat aja dah sendiri segitu cakepnya.tapi peanya dia masih sering bilang "ish akumah jelek bla bla nyenyenyenye Bicit bat ya. padahal semua orang juga bisa nilai sendiri 😭. dah ah cape intinya selamat ulang tahun ya my bestot. all you the best . bjir so inggris</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Interaksi JavaScript
+    const flipbook = document.querySelector('.flipbook');
+    let currentPage = 0;
+    const totalPages = document.querySelectorAll('.flipbook-page').length;
+
+    function goToPage(page) {
+      const pages = document.querySelectorAll('.flipbook-page');
+      pages.forEach((page) => page.classList.remove('active'));
+      
+      if (page % 2 === 0) {
+        pages[page].classList.add('active');
+        pages[page + 1]?.classList.add('active');
+      } else {
+        pages[page - 1].classList.add('active');
+        pages[page].classList.add('active');
+      }
+
+      currentPage = page;
+
+      if (page > 0) {
+        document.querySelector('.cover').style.display = 'none';
+      } else {
+        document.querySelector('.cover').style.display = 'block';
+      }
+    }
+
+    document.querySelectorAll('.flipbook-page, .cover').forEach((page, index) => {
+      page.addEventListener('click', () => goToPage(index));
+    });
+
+    flipbook.addEventListener('touchstart', handleTouchStart, false);
+    flipbook.addEventListener('touchmove', handleTouchMove, false);
+
+    let xDown = null;
+    let yDown = null;
+
+    function getTouches(evt) {
+      return evt.touches || evt.originalEvent.touches;
+    }
+
+    function handleTouchStart(evt) {
+      const firstTouch = getTouches(evt)[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    }
+
+   function handleTouchMove(evt) {
+      if (!xDown || !yDown) {
+        return;
+      }
+
+      let xUp = evt.touches[0].clientX;
+      let yUp = evt.touches[0].clientY;
+
+      let xDiff = xDown - xUp;
+      let yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+          if (currentPage < totalPages - 2) {
+            goToPage(currentPage + 2);
+          }
+        } else {
+          if (currentPage > 1) {
+            goToPage(currentPage - 2);
+          } else {
+            goToPage(0);
+          }
+        }
+      }
+
+      xDown = null;
+      yDown = null;
+    }
+  </script>
+</body>
+</html>
